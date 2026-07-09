@@ -11,5 +11,12 @@ namespace EmployeeManagement.Api.Data
         }
 
         public DbSet<Employee> Employees => Set<Employee>();
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
+        }
     }
 }
